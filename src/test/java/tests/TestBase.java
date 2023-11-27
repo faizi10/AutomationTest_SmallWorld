@@ -10,6 +10,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.asserts.SoftAssert;
 import pageObjects.LoginPage;
+import pageObjects.ProductsPage;
 import pageObjects.SuccessfulLoginPage;
 
 import java.io.File;
@@ -22,16 +23,17 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class TestBase extends AbstractTestNGCucumberTests {
-    private WebDriver driver;
+    private static WebDriver driver;
     protected static SoftAssert softAssert;
     protected static LoginPage loginPage;
+    protected static ProductsPage productsPage;
     protected static SuccessfulLoginPage successfulLoginPage;
-    public void setupChromeDriver() {
+    public static void setupFirefoxDriver() {
         driver = WebDriverManager.firefoxdriver().create();
         driver.manage().window().maximize();
     }
 
-    public void quitDriver() {
+    public static void quitDriver() {
         if (driver != null) {
             driver.quit();
         }
@@ -74,6 +76,7 @@ public class TestBase extends AbstractTestNGCucumberTests {
         if (driver!=null) {
             loginPage = new LoginPage(driver);
             successfulLoginPage = new SuccessfulLoginPage(driver);
+            productsPage = new ProductsPage(driver);
         }
     }
 

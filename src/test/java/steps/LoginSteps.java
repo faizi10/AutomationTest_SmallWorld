@@ -35,6 +35,16 @@ public class LoginSteps extends TestBase {
 
     @Then("I should be logged in successfully")
     public void iShouldBeLoggedInSuccessfully() {
-        softAssert.assertEquals(successfulLoginPage.getSuccessTitleText(), SUCCESS_LOGIN);
+        softAssert.assertEquals(productsPage.getProductsPageTitle(), "Products");
+    }
+
+    @Then("I click on ok on the alert dialogue")
+    public void iClickOnOkOnTheAlertDialogue() {
+        loginPage.clickOkAlertDialogue();
+    }
+
+    @Then("I should not be able to log in with the following message {string}")
+    public void iShouldNotBeAbleToLogInWithTheFollowingMessage(String message) {
+        softAssert.assertEquals(loginPage.getUnsuccessfulLoginMessage(), message);
     }
 }

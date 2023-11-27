@@ -7,21 +7,21 @@ public class Hooks extends TestBase {
 
     @BeforeAll
     public static void start() {
+        setupFirefoxDriver();
     }
 
     @Before
     public void before(Scenario scenario) {
-        setupChromeDriver();
         beforeScenario(scenario);
     }
 
     @After
     public void after(Scenario scenario) {
         afterScenario(scenario);
-        quitDriver();
     }
 
     @AfterAll
     public static void end() {
+        quitDriver();
     }
 }
